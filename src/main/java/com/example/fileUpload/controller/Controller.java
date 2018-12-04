@@ -25,10 +25,15 @@ public class Controller {
 	private Response createAccount(@RequestParam(required=false) MultipartFile file) throws IOException {
 		System.out.println("Controller begins");
 		if(file!=null) {
-			if(services.fileUpload(file) != null);
+			if(services.fileUpload(file) != null) {
 			response.setResponseCode(0);
 			response.setResponseMessage(file.getOriginalFilename()+" uploaded succesfully");
-			return response;
+			return response;}
+			else {
+				response.setResponseCode(1);
+				response.setResponseMessage("File cannot upload");
+				return response;
+			}
 		}
 	else {
 		System.out.println("File is empty");
